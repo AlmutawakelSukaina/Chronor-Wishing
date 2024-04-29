@@ -1,5 +1,6 @@
 export 'dart:convert';
 export 'dart:io';
+export 'package:cached_network_image/cached_network_image.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_auth/firebase_auth.dart';
@@ -52,6 +53,8 @@ export 'module/main_page/home_tab/provider/home_provider.dart';
 export 'module/main_page/home_tab/view/historical_details.dart';
 export 'module/main_page/home_tab/view/historical_list.dart';
 export 'module/main_page/home_tab/view/home_tab.dart';
+export 'module/main_page/home_tab/view/historical_backup_details.dart';
+
 export 'module/main_page/main_page.dart';
 export 'module/main_page/profile_tab/notification/notification_chips.dart';
 export 'module/main_page/profile_tab/notification/notification_service.dart';
@@ -59,6 +62,7 @@ export 'module/main_page/profile_tab/notification/notification_setting.dart';
 export 'module/main_page/profile_tab/profile_tab.dart';
 export 'module/main_page/profile_tab/user_profile/user_profile.dart';
 export 'module/main_page/profile_tab/user_profile/user_profile_provider.dart';
+
 //---------------Module-------------
 export 'module/splash/splash.dart';
 export 'module/user/sign_in/sign_in.dart';

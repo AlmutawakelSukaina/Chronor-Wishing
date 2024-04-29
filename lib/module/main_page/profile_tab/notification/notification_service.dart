@@ -4,6 +4,7 @@ import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../../../libs.dart';
+import '../../../../main.dart';
 
 
 class NotificationService {
@@ -29,13 +30,15 @@ class NotificationService {
     InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
+
     );
 
     if(Platform.isAndroid) {
       flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
     }
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings
+     );
   }
   void onDidReceiveLocalNotification(int id, String?title,String ?body,String? payload)
   {
@@ -78,7 +81,7 @@ class NotificationService {
         }
 
     tz.TZDateTime scheduleTime2 = tz.TZDateTime(tz.getLocation(timeZone),
-       date.year, date.month, date.day,9,  );
+      year, date.month, date.day,9,  );
     return scheduleTime2;
   }
 

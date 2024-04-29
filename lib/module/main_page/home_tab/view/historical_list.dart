@@ -1,14 +1,16 @@
 
 
+
 import '../../../../libs.dart';
 
 class HistoricalList extends StatelessWidget {
-  final List<HistoricalModel> historicalModel;
+  final List<HistoricalModel>? historicalModel;
+  final List<HistoricalCategoryModel>? alternative;
   final ValueNotifier<String?> searchText;
   const HistoricalList({
     super.key,
-    required this.historicalModel,
-    required this.searchText,
+      this.historicalModel,
+    required this.searchText, this.alternative,
   });
 
   @override
@@ -16,16 +18,28 @@ class HistoricalList extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: searchText,
         builder: (BuildContext context, String? value, _) {
-          List<HistoricalModel> event = [];
-          globalPrint("value inside $value");
+          List  event = [];
+          globalPrint("value inside historicalModel$historicalModel");
+          globalPrint("value inside alternative$alternative");
           if (value != null && value.trim().isNotEmpty) {
-            for (HistoricalModel data in historicalModel) {
-              if (data.text!.toLowerCase().contains(value.toLowerCase())) {
-                event.add(data);
+            if(historicalModel!=null&&historicalModel!.isNotEmpty) {
+              for (HistoricalModel data in historicalModel!) {
+                if (data.text!.toLowerCase().contains(value.toLowerCase())) {
+                  event.add(data);
+                }
               }
-            }
+            } else
+              {
+                for (HistoricalCategoryModel data in alternative!) {
+                  if (data.text!.toLowerCase().contains(value.toLowerCase())) {
+                    event.add(data);
+                  }
+                }
+              }
           } else {
-            event = historicalModel;
+            event = historicalModel  ?? (alternative as List<HistoricalCategoryModel>);
+            globalPrint("alternative  inside ${alternative}");
+
           }
           return CustomScrollView(slivers: <Widget>[
             if (event.isEmpty)
@@ -65,10 +79,20 @@ class HistoricalList extends StatelessWidget {
                       ],
                     ).containerWithBorderSide(
                         AppColors.colorsEvent[index % 5]).symmetricPadding(2, 4).onTap((){
-                      context.pushPage(HistoricalDetails(
+
+                     if(alternative==null) {
+                       context.pushPage(HistoricalDetails(
                          historicalModel: event[index],
 
                       ));
+                     }else
+                       {
+
+                         context.pushPage(HistoricalBackUpDetails(
+                           pages: event[index].pages ,
+                         year: event[index].year,
+                         ));
+                       }
                     });
                   },
                   childCount: event.length, // Number of items in the list

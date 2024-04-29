@@ -16,19 +16,12 @@ void main() async {
 
   );
 
-  // try {
-  //   await SharedPrefsHelper.init();
-  //
-  // }catch(e)
-  // {
-  //  }
 
 
 
     NotificationService().initNotification();
 
-  // await initializeTimeZone();
-  tz.initializeTimeZones();
+   tz.initializeTimeZones();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor:AppColors.orange,
     statusBarBrightness: Brightness.dark,
