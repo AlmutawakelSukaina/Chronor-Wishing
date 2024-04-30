@@ -37,4 +37,4 @@ Once the project is cloned and set up on your local machine, feel free to explor
 **Additional Notes**
 Flutter Version Requirement: This project requires Flutter SDK version 3.19.5  or higher and Dart SDK version 3.3.3 . 
 Make sure you have the correct version installed on your machine.
-**Contact Information:** If you encounter any issues or have any questions, feel free to contact the project owner at [email](sukaina2099@gmail.com).
+**Contact Information:** If you encounter any issues or have any questions, feel free to contact me at [sukaina2099@gmail.com](sukaina2099@gmail.com).
